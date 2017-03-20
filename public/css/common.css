@@ -1,0 +1,130 @@
+@import url('https://fonts.googleapis.com/css?family=Noto+Sans');
+html{
+    height: 100%;
+}
+body,div,dl,dt,dd,ul,ol,li,h1,h2,h3,h4,h5,form,fieldset,p,button {
+  margin: 0;
+  padding: 0;
+}
+dl,ul,ol,li {
+  list-style: none;
+}
+textarea {
+  resize: none;
+}
+body {
+    font-family: 'Noto Sans', sans-serif !important;
+    font-size:16px;
+    height:100%;
+}
+body>div{
+    height:100%;
+}
+.mt_20{margin-top:20px;}
+select {
+  -webkit-appearance: none;
+  /* 네이티브 외형 감추기 */
+
+  -moz-appearance: none;
+  appearance: none;
+  background: #fff url('/img/select_arrow.jpg') no-repeat 95% 50%;
+  /* 화살표 모양의 이미지 */
+
+  border-radius: 0;
+  border: 1px solid #050505;
+  height: 36px;
+  width: 135px;
+  padding: 0 7px;
+  font-size: 14px;
+  color: #333333;
+  margin-right: 9px;
+}
+/* IE 10, 11의 네이티브 화살표 숨기기 */
+select::-ms-expand {
+  display: none;
+}
+button{
+    border:none;
+    background:none;
+}
+/**/
+.pagination>li>a{border:none;color:#333535}
+
+/*공통 버튼*/
+.phon_number .phon_number_top{height: 10%;text-align: center;letter-spacing: 3px;font-size: 20px;border-bottom:1px solid #E5E7E9;position:relative;}
+.phon_number .phon_number_top p{position:absolute;top:50%;left:50%;transform: translate(-50%, -50%);}
+.phon_number .phon_number_top button{position:absolute;right:4%;top: 50%;transform: translate(0%, -50%);font-size:14px;}
+.phon_number .phon_number_top button span{font-size:20px;display:block;}
+.phon_number .left_position{padding:3%;background:#ECF2F8 url('/img/logo2.png') no-repeat 51% 93%;height:90%;}
+.phon_number>form{margin:0 auto;height:90%;padding:0;}
+.phon_number>form>div,
+.phon_number>form>div>div{height:100%;}
+.phon_number input[type="text"]{width:100%; margin:0 auto;display:block;height:20%;font-size: 34px;padding: 4%;text-align: center;letter-spacing:6px;border: none;border-bottom: 1px solid #E5E7E9;font-weight:900}
+.phon_number .button_wrap{padding:0;}
+.phon_number .button_wrap >p{position:absolute;top:13%;left:50%;transform: translate(-50%, 0%);font-size:16px;color:#7d7d7d;width:100%;padding:0 10px;}
+.phon_number .button_wrap >p >span{color:#000}
+.phon_number .button_wrap button,
+.phon_number .button_wrap input[type="button"]{width:33.3333%;height:20%;float:left;border:1px solid #E5E7E9;background:#fff;font-size:28px;font-weight:900}
+
+
+/*login*/
+.login{text-align: center;height:100%;background:url('/img/story.jpg') no-repeat; background-size:cover;}
+.login .login_wrap{width:50%;}
+.login .login_wrap>div{background:rgba(253, 253, 253, 0.63);position:absolute;width:65%; top: 50%; left: 50%; transform: translate(-50%, -50%);padding:40px 0;}
+
+.login .login_wrap>div>form{width:60%;margin:0 auto;text-align: left;}
+.login .login_wrap .log_wrap{display:inline-block;width:65%;}
+.login select{border:1px solid #C59D5F;width:100%;margin-bottom:5px;}
+.login input[type="password"]{height:36px;width:100%;border:1px solid #C59D5F;height:34px;padding:0 1%;}
+.login input[type="button"]{width:34%;height:75px;border:1px solid #C59D5F;border-radius:0;background:#C59D5F;color:#fff;font-size:15px;float:right;}
+
+.login .btn_wrap{display:block;margin-top:24px;}
+.login .btn_wrap button{font-size:16px; width:30%;height:40px;border:1px solid #C59D5F;background:#fff;}
+.login .btn_wrap button.cus{background:#191919;color:#C59D5F}
+.login .btn_wrap button.cle{background:#C59D5F;color:#fff}
+
+/*customer*/
+.customer{}
+.customer .div_left button{min-width:150px;border:1px solid #050505;background:#fff;position: absolute;bottom:20px;right:50%;margin-right:-75px;height:36px;}
+
+/*clerk*/
+.clerk .right_position{padding:0;height:90%;}
+.clerk .right_position .phonenumber{margin-top:10px; padding: 0 5px;font-size: 0;height:10%}
+.clerk .right_position .phonenumber #phoneNumber{display: inline-block;width:85%;;height:100%;border:1px solid #e5e7e9;}
+.clerk .right_position .phonenumber input[type="button"]{width:15%;height:100%;float:right;background:#c69f61;color:#fff;border:none;font-size:16px;}
+.clerk .div_check{margin:10px 0;height:10%;float: left;width: 50%;position:relative;}
+.clerk .div_check>div{position:absolute;top: 50%;transform: translate(0% ,-50%);width:100%;padding:0 5px;}
+.clerk .div_check>div input[type="submit"]{
+    margin-top:2px;
+    font-size: 18px;
+    color: #fff;
+    background: #000;
+    border: none;
+    border-radius: 3px;
+    height: 35px;
+    width: 57px;}
+.clerk .div_check>div input[type="number"]{border:1px solid #E5E7E9;height:33px;width:60%;}
+
+
+.clerk table{width:100%; text-align: center; padding:0 5px;}
+.clerk table th{text-align: center;padding:2%;background:#c69f61;color:#fff;font-size:20px;}
+.clerk table td{border:1px solid #e5e7e9;font-size:18px;}
+.clerk table tr{height:45px;}
+.clerk nav{height:10%;text-align: center;}
+
+.clerk .pagination .on{font-weight: 800;}
+
+/*signUp*/
+.signUp .left_position>p{font-size:17px;text-align: center;margin-bottom:10px}
+.signUp .left_position >div{max-height:150px;overflow:scroll;background:#fff;padding:10px;}
+.signUp .left_position >div.check{border-top:1px solid #a6a8ab;}
+
+/*check*/
+.check .right_position{height:90%;padding:0px;text-align: center;position:relative;position:relative;background:url('/img/1.png') no-repeat 106% 98%; background-size: 42%;}
+.check .right_position >div{display:table;width:100%;height:100%;}
+.check .right_position >div> .wrapper{display:table-cell;vertical-align:middle;}
+.check .right_position >div> .wrapper > p{font-size:30px;line-height:60px; margin-top:-40px;}
+.check .right_position >div p span.total{font-weight: bold;color: #c69f61;font-size: 38px;}
+.check .right_position >div p span.point{font-weight: bold;color: #c69f61;}
+.check .right_position input[type="button"]{width:150px;height:40px;color:#fff;background:#c69f61;left:50%;border:none;font-size:18px; margin-top:20px;}
+.check .right_position .deco{display: block;margin: 0 auto;}

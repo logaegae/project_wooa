@@ -1,0 +1,97 @@
+{% extends "./blocks/layout.html" %}
+{% block content %}
+<div class="clerk phon_number">
+	<div class="phon_number_top">
+		<p>직원 화면입니다.</p>
+		<button onclick="location.href='customer.html'"><span class="glyphicon glyphicon-arrow-left"></span>뒤로가기</button>
+	</div>
+	<div class="col-md-4 col-sm-4 col-sm-4 col-xs-4 left_position">
+	</div>
+
+	<div class="col-md-8 col-sm-8 col-sm-8 col-xs-8 right_position">
+		<form action="" method="post" class="phonenumber">
+			<input type="text" value="{{list.phoneNumber}}" name="phoneNumber" id="phoneNumber"/>
+			<input type="button"  value="조회" id="check"/>
+		</form>
+		{% if valid %}
+		<form action="check.html" method="post" class="div_check">
+			<div class="plus">
+				<input type="number" min="1" name="issuePoint"/>
+				<input type="submit" value="적립" />
+				<input type="hidden" name="storeId" value="{{list.StoreAccount.storeId}}"/>
+				<input type="hidden" name="accountId" value="{{list.accountId}}"/>
+				<input type="hidden" name="issueType" value="P"/>
+				<input type="hidden" value="{{list.phoneNumber}}"  name="phoneNumber" />
+			</div>
+		</form>
+		<form action="check.html" method="post" class="div_check">
+			<div class="minus">
+				<input type="number" min="1" name="issuePoint" id="minusVal"/>
+				<input type="submit" value="소진" id="minus"/>
+
+				<input type="hidden" name="storeId" value="{{list.StoreAccount.storeId}}"/>
+				<input type="hidden" name="accountId" value="{{list.accountId}}"/>
+				<input type="hidden" name="issueType" value="M"/>
+				<input type="hidden" value="{{list.phoneNumber}}"  name="phoneNumber" />
+			</div>
+		</form>
+		{% elseif !valid %}
+		<p class="text-center"style="margin: 10px 0;">기록에 오류가 있습니다. 관리자에게 문의해주세요.</p>
+		{% endif %}
+		<p class="text-center"style="margin: 10px 0;">현재 보유 포인트 : {% if !list.pointBalance %}--{% else%}{{list.pointBalance}}{% endif %}P</p>
+		<table>
+			<colgroup>
+				<col>
+				<col>
+				<col>
+			</clogroup>
+			<thead>
+				<tr>
+					<th>날짜</th>
+					<th>적립포인트</th>
+					<th>구분</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for record in records %}
+				<tr>
+					<td>{{record.registDate | date('Y-m-d')}}</td>
+					<td>{{record.issuePoint}}</td>
+					<td>{{record.desc}}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		<nav>
+
+		{% if list %}
+			{% include "./blocks/pagination.html" %}
+		{% endif %}
+		</nav>
+	</div>
+</div>
+<script>
+	$('#check').click(function(){
+		if($('#phoneNumber').val().length != 11 || typeof Number($('#phoneNumber').val()) !== 'number' ){
+			alert("전화번호를 확인해주세요");
+			$('#phoneNumber').val('');
+		}else{
+			checkId($('#phoneNumber').val(),function(){
+				location.href="clerk.html";
+			});
+		}
+	});
+	$('#minus').click(function(e){
+		var inputNum = $('#minusVal').val();
+		var point = '{{list.pointBalance}}';
+		console.log(inputNum,point)
+		if(inputNum > point){
+			alert("포인트가 부족합니다");
+			e.preventDefault();
+		}		
+	});
+	function goPage(page) {
+        location.href = "clerk.html?page="+page;
+    }
+</script>
+{% endblock %}

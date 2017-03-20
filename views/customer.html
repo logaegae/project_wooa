@@ -1,0 +1,129 @@
+{% extends "./blocks/layout.html" %}
+{% block content %}
+
+<div class="customer phon_number">
+	<div class="phon_number_top">
+		<p>휴대폰 번호를 입력해 주세요.</p>
+		<!-- <button onclick="location.href='signUp.html'"><span class="glyphicon glyphicon-user"></span>회원가입</button> -->
+	</div>
+	<div class="col-md-4 col-sm-4 col-sm-4 col-xs-4 left_position">
+
+	</div>
+	<form class="col-md-8 col-sm-8 col-xs-8">
+		<div>
+			<div class="button_wrap">
+				<input type="text" id="display" readonly="true"/>
+				<!-- <p style="word-break: keep-all;">등록하지 않은 고객님들께서는 <span>회원가입버튼</span>을 눌러주세요.</p> -->
+				<button  class="col-md-4 col-sm-4 col-xs-4 numBtn">1</button>
+				<button  class="col-md-4 col-sm-4 col-xs-4 numBtn">2</button>
+				<button  class="col-md-4 col-sm-4 col-xs-4 numBtn">3</button>
+
+				<button  class="col-md-4 col-sm-4 col-xs-4 numBtn">4</button>
+				<button  class="col-md-4 col-sm-4 col-xs-4 numBtn">5</button>
+				<button  class="col-md-4 col-sm-4 col-xs-4 numBtn">6</button>
+
+				<button  class="col-md-4 col-sm-4 col-xs-4 numBtn">7</button>
+				<button  class="col-md-4 col-sm-4 col-xs-4 numBtn">8</button>
+				<button  class="col-md-4 col-sm-4 col-xs-4 numBtn">9</button>
+
+				<button  class="col-md-4 col-sm-4 col-xs-4 delBtn">del</button>
+				<button  class="col-md-4 col-sm-4 col-xs-4 numBtn">0</button>
+				<input type="button" value="확인" id="check"/>
+			</div>
+		</div>
+	</form>
+</div>
+
+
+<button type="button" class="" data-toggle="modal" data-target="#myModal" style="display:none;" id="modalBtn"></button>
+
+<div id="myModal" class="modal fade" role="dialog">
+  <div class="modal-dialog modal-lg">
+    <!-- Modal content-->
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+        <h4 class="modal-title">대기중...</h4>
+      </div>
+      <div class="modal-body">
+        <p class="text-center"><br><br><span style="font-size:23px;">로그인에 성공하였습니다</span> <br><br><br> <span style="font-size:25px;">담당직원에게 보여주세요</span><br><br></p>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div class="customer phon_number">
+	<div class="div_left">
+		<button onclick="location.href='signUp.html'">회원가입</button>
+	</div>
+	<div class="div_right">
+		<form action="inputTelNumber" method="post">
+			<input type="text" name="phoneNumber" id="phoneNumber"/>
+			<div class="button_wrap">
+				<button>1</button>
+				<button>2</button>
+				<button>3</button>
+
+				<button>4</button>
+				<button>5</button>
+				<button>6</button>
+
+				<button>7</button>
+				<button>8</button>
+				<button>9</button>
+
+				<button>0</button>
+				<input type="button" value="확인" id="check"/>
+				<button>del</button>
+			</div>
+		</form>
+	</div>
+</div> -->
+<script>
+	var text='';
+
+
+	function inputH(target){
+		if(target.length == 3) text += '.'
+		if(target.length == 8) text += '.'
+	}
+	function delText(target){
+		if(target.length == 4 || target.length == 5) text = text.substring(0,text.length - 1);
+		if(target.length == 9 || target.length == 10) text = text.substring(0,text.length - 1);
+		text = text.substring(0,text.length - 1);
+	}
+	$('#check').click(function(){
+		var temp = text.split('.')[0]+text.split('.')[1]+text.split('.')[2]
+		inputTelNumber(temp,function(){
+
+			$('#modalBtn').click();
+			$(window).on("orientationchange",function(){
+			  location.href="clerk.html";
+			});
+			// location.href="clerk.html";
+		});
+	});
+	//번호 누를때
+	$(".numBtn").click(function(e){
+		//글자수 제한
+		if(text.length >= 13 ){
+			return false;
+		}
+		inputH(text);
+		//데이터입력
+		text += $(this).text();
+		//구분자 삽입
+		//표시
+		$('#display').val(text);
+		e.preventDefault();
+	});
+	//del 누를때
+	$(".delBtn").click(function(e){
+		delText(text);
+		$('#display').val(text);
+		e.preventDefault();
+	});
+</script>
+{% endblock %}

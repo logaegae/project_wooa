@@ -1,0 +1,55 @@
+<ul class="pagination">
+    {% set totalPage = Math.ceil(totalCount / pageSize) %}
+
+    {% set num =  page-1 %}
+    {% set startPage = Math.floor(num / 10) * 10 + 1%}
+    {% set endPage = startPage + 9 %}
+    {% set goEnd = endPage + 1 %}
+    {% if endPage  > totalPage %}
+        {% set endPage = totalPage %}
+        {% set goEnd = endPage %}
+    {% endif %}
+
+    <!-- <a href="javascript:goPage(1)" class="first">처음</a> -->
+
+    {% if page > 1 %}
+    <li>
+      <a href="javascript:goPage({{page-1}})" aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+
+    {% else %}
+    <li>
+      <a aria-label="Previous">
+        <span aria-hidden="true">&laquo;</span>
+      </a>
+    </li>
+    {% endif %}
+
+    {% for i in Array(endPage-startPage+1) %}
+        {% set naviPage =  startPage + loop.index-1 %}
+        {% if naviPage == page %}
+            <li><a href="#" class="on">{{naviPage}}</a></li>
+        {% else %}
+            <li><a href="javascript:goPage({{naviPage}})">{{naviPage}}</a></li>
+        {% endif %}
+    {% endfor %}
+
+
+    {% if page < totalPage %}
+    <li>
+      <a href="javascript:goPage({{page+1}})" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% else %}
+    <li>
+      <a href="#" aria-label="Next">
+        <span aria-hidden="true">&raquo;</span>
+      </a>
+    </li>
+    {% endif %}
+
+    <!-- <a href="javascript:goPage({{goEnd}})" class="last">마지막</a> -->
+</ul>
